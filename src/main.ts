@@ -5,18 +5,22 @@ import { startGame } from './game'
 import * as utils from './utils'
 
 const PORT = 3000
+// Every 10 mins
+const GAME_INTERVAL = 1000 * 60 * 10
+// Every 1 second
+const STATS_INTERVAL = 1000 
 
 function main() {
     // Start the game
     startGame()
     setInterval(() => {
         startGame()
-    }, 1000 * 60 * 10);
+    }, GAME_INTERVAL);
 
     // Start fetching stats
     setInterval(() => {
         stats(utils.getAccount())
-    }, 1000);
+    }, STATS_INTERVAL);
 
     // Run the router
     var app = newRouter()
