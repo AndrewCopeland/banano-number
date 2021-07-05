@@ -56,7 +56,7 @@ export function stats(myAccount: string) {
         utils.setCurrentPot(Number(BigInt(response.data.balance) / BigInt('100000000000000000000000000000')))
     },
     error => {
-        utils.logError("Failed to get account balance for " + myAccount + ". " + error)
+        utils.logError("Failed to get account balance for " + myAccount + ". " + JSON.stringify(error))
     })
 
     // Get all current players of the game
