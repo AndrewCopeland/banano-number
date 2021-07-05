@@ -129,7 +129,7 @@ export function setWallet(wallet: string ) {
 }
 
 export function getWallet() {
-    return readFile(wallet_file)
+    return readFile(wallet_file).trim()
 }
 
 export function setAccount(account: string) {
@@ -137,7 +137,7 @@ export function setAccount(account: string) {
 }
 
 export function getAccount() {
-    return readFile(account_file)
+    return readFile(account_file).trim()
 }
 
 // logging functions
