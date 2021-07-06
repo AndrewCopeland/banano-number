@@ -14,7 +14,7 @@ export function playTheGame() {
     var gameAccount = utils.getAccount()
     currentGameNumber = utils.getCurrentGameNumber()
 
-    for (let i = 0; i < players.length-1; i++) {
+    for (let i = 0; i < players.length; i++) {
         var player = players[i]
         var amount = i + 1
         var payment = BigInt(amount) * BigInt('100000000000000000000000000000')
