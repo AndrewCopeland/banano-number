@@ -121,6 +121,8 @@ function distributeWinnings(currentHeight: number, myAccount: string) {
             return
         }
 
+        // winners exist clear the roll over pot
+        utils.setRollOverPot(BigInt(0))
         var payment = calculatePayment(pot, winners.length)
         gameHistory.distribution = payment.toString()
         utils.appendGameHistory(gameHistory)
