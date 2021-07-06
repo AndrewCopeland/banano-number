@@ -19,6 +19,7 @@ const game_history_file = data_dir + "history"
 const roll_over_pot_file = data_dir + "roll-over"
 const wallet_file = data_dir + "wallet"
 const account_file = data_dir + "account"
+const house_players_file = data_dir + "house-players"
 
 function readFile(path: string): string {
     return fs.readFileSync(path,'utf8');
@@ -138,6 +139,10 @@ export function setAccount(account: string) {
 
 export function getAccount() {
     return readFile(account_file).trim()
+}
+
+export function getHousePlayers(): string[] {
+    return JSON.parse(readFile(house_players_file))
 }
 
 // logging functions
