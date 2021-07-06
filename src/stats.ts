@@ -5,7 +5,9 @@ import * as types from './types';
 
 export function currentPlayerFromBlock(block: any): types.Player {
     // Only care about receives
+    var account = block['account']
     if ( block['type'] !== 'receive') { 
+        utils.log("block is not receive for account " + account)
         return null
     }
 
@@ -16,7 +18,7 @@ export function currentPlayerFromBlock(block: any): types.Player {
     }
 
     var number = BigInt(block['amount']) / BigInt('100000000000000000000000000000')
-    var account = block['account']
+    
     var player: types.Player = {
         "account": account,
         "number": Number(number)
