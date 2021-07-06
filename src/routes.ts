@@ -46,7 +46,7 @@ export function newRouter(): core.Express {
     });
 
     app.get('/api/account', (req, res) => {
-        res.send(JSON.stringify(utils.getAccount()));
+        res.send(utils.getAccount());
     });
 
     return app
