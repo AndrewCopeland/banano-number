@@ -32,6 +32,9 @@ export function getRecievedAmountPlayersAndWinners(blocks: any, winningNumber: n
     var winners: string[] = []
 
     blocks.forEach(block => {
+        if (block['type'] !== 'receive') { 
+            return   
+        }
         var amount = BigInt(block['amount'])
         var player = stats.currentPlayerFromBlock(block)
         receivedAmount += amount
