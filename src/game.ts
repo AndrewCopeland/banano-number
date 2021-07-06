@@ -95,7 +95,8 @@ function distributeWinnings(currentHeight: number, myAccount: string) {
         utils.log("Received amount: " + receivedAmount.toString())
         utils.log("Number of Winners: " + winners.length.toString())
 
-        var pot = utils.getRollOverPot() + receivedAmount 
+        var pot = utils.getRollOverPot() + receivedAmount
+        utils.log("The pot: " + pot)
         var gameNumber = utils.getCurrentGameNumber()
 
         // write players, clear current players, set the last pot and increment current game number
