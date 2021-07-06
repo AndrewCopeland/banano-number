@@ -132,7 +132,7 @@ function distributeWinnings(currentHeight: number, myAccount: string) {
             utils.log("Sent Payment")
             utils.log(response)
         }, error => {
-            utils.logError("Error occured when sending payments: " + error)
+            utils.logError("Error occured when sending payments: " + JSON.stringify(error))
         });
     },
     error => {
