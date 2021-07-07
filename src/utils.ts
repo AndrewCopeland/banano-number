@@ -72,7 +72,7 @@ export function getGameHistory(): History[] {
 }
 
 export function getBoostAccount(): string {
-    return readFile(boost_account_file)
+    return readFile(boost_account_file).trim()
 }
 
 // Set functions
