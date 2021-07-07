@@ -20,6 +20,7 @@ const roll_over_pot_file = data_dir + "roll-over"
 const wallet_file = data_dir + "wallet"
 const account_file = data_dir + "account"
 const house_players_file = data_dir + "house-players"
+const boost_account_file = data_dir + "boost-account"
 
 function readFile(path: string): string {
     return fs.readFileSync(path,'utf8');
@@ -68,6 +69,10 @@ export function getLastWinningNumber(): number {
 
 export function getGameHistory(): History[] {
     return JSON.parse(readFile(game_history_file))
+}
+
+export function getBoostAccount(): string {
+    return readFile(boost_account_file)
 }
 
 // Set functions
