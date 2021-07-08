@@ -7,23 +7,40 @@ export function guessNumber(numbers: number) {
     return Math.floor(Math.random() * numbers) + 1;
 }
 
+// export function guessAlgo() {
+//     var numberRange = 9
+//     var numbers = []
+//     var numbersLength = guessNumber(3)
+//     // utils.log("Set Size: " + numbersLength.toString())
+
+//     for (var i = 0; i < numbersLength; i++) {
+//         numbers.push(guessNumber(numberRange))
+//     }
+
+//     for(var i = numberRange; i > 0; i--) {
+//         if (utils.listContains(numbers, i)) {
+//             return i
+//         }
+//     }
+//     // Should never happen
+//     return 0
+// }
+
 export function guessAlgo() {
-    var numberRange = 9
-    var numbers = []
-    var numbersLength = guessNumber(3)
-    // utils.log("Set Size: " + numbersLength.toString())
+    var numbers = [
+        1, 
+        2, 2, 
+        3, 3, 3, 
+        4, 4, 4, 4, 
+        5, 5, 5, 5, 5,
+        6, 6, 6, 6, 6, 6,
+        7, 7, 7, 7, 7, 7, 7,
+        8, 8, 8, 8, 8, 8, 8, 8,
+        9, 9, 9, 9, 9, 9, 9, 9, 9
+    ]
 
-    for (var i = 0; i < numbersLength; i++) {
-        numbers.push(guessNumber(numberRange))
-    }
-
-    for(var i = numberRange; i > 0; i--) {
-        if (utils.listContains(numbers, i)) {
-            return i
-        }
-    }
-    // Should never happen
-    return 0
+    return numbers[Math.floor(Math.random() * numbers.length)]
+    
 }
 
 export function getRecievedAmountPlayersAndWinners(blocks: any, winningNumber: number): [bigint, types.Player[], string[]] {

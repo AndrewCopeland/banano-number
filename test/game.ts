@@ -3,7 +3,6 @@ import { expect } from 'chai';
 
 import 'mocha';
 
-
 function newBlock(type: string, amount: BigInt, account: string): any {
     return {
         "type": type,
@@ -25,6 +24,15 @@ function getRandomValidBlocks(amount: number): any {
     }
     return blocks
 }
+
+function minThreshold(number: number): number {
+    return (number / 45 * 100000) - 300
+}
+
+function maxThreshold(number: number): number {
+    return (number / 45 * 100000) + 300
+}
+
 
 describe('Game tests', () => {
     it('Test game calculate payment', () => {
@@ -146,25 +154,25 @@ describe('Game tests', () => {
             results[result] += 1
         }
 
-        // 1: 4-5%
-        // 2: 5-6%
-        // 3: 6-7%
-        // 4: 8-9%
-        // 5: 10-11%
-        // 6: 12-13%
-        // 7: 14-15%
-        // 8: 17-18%
-        // 9: 20-21%
+        // 1: 1/45
+        // 2: 2/45
+        // 3: 3/45
+        // 4: 4/45
+        // 5: 5/45
+        // 6: 6/45
+        // 7: 7/45
+        // 8: 8/45
+        // 9: 9/45
         var thresholds = {
-            1: [4000, 5000],
-            2: [5000, 6000],
-            3: [6000, 7000],
-            4: [8000, 9000],
-            5: [10000, 11000],
-            6: [12000, 13000],
-            7: [14000, 15000],
-            8: [17000, 18000],
-            9: [20000, 21000]
+            1: [minThreshold(1), maxThreshold(1)],
+            2: [minThreshold(2), maxThreshold(2)],
+            3: [minThreshold(3), maxThreshold(3)],
+            4: [minThreshold(4), maxThreshold(4)],
+            5: [minThreshold(5), maxThreshold(5)],
+            6: [minThreshold(6), maxThreshold(6)],
+            7: [minThreshold(7), maxThreshold(7)],
+            8: [minThreshold(8), maxThreshold(8)],
+            9: [minThreshold(9), maxThreshold(9)]
         }
 
         for(var number in thresholds) {
