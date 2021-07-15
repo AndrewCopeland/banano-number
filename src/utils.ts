@@ -134,7 +134,7 @@ export function appendLatestGameHistory(history: History) {
 }
 
 export function getLatestGameHistory(): History[] {
-    return JSON.parse(readFile(game_history_file))
+    return JSON.parse(readFile(game_latest_history_file))
 }
 
 export function setLatestGameHistory(histories: History[]) {
