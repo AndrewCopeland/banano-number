@@ -16,6 +16,7 @@ const last_winning_number_file = data_dir + "last-winning-number"
 const current_game_number_file = data_dir + "game-number"
 
 const game_history_file = data_dir + "history"
+const game_latest_history_file = data_dir + "latest-history"
 const roll_over_pot_file = data_dir + "roll-over"
 const wallet_file = data_dir + "wallet"
 const account_file = data_dir + "account"
@@ -117,9 +118,27 @@ export function setGameHistory(histories: History[]) {
 }
 
 export function appendGameHistory(history: History) {
+    appendLatestGameHistory(history)
     var histories = getGameHistory()
     histories.push(history)
     setGameHistory(histories)
+}
+
+export function appendLatestGameHistory(history: History) {
+    var histories = getLatestGameHistory()
+    histories.push(history)
+    if (histories.length > 100) {
+        histories.shift()
+    }
+    setLatestGameHistory(histories)
+}
+
+export function getLatestGameHistory(): History[] {
+    return JSON.parse(readFile(game_history_file))
+}
+
+export function setLatestGameHistory(histories: History[]) {
+    writeFile(game_latest_history_file, JSON.stringify(histories))
 }
 
 export function setRollOverPot(rollOver: BigInt) {
