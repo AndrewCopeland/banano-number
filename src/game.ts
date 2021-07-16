@@ -78,6 +78,11 @@ export function calculatePayment(pot: bigint, numberWinners: number): bigint {
 }
 
 function distributeWinnings(currentHeight: number, myAccount: string) {
+    //  Always set current game time to now even if game does not start
+    // This will allow us to know when a game will end for the front end
+    var dateTime = Date.now()
+    utils.setCurrentGameTime(dateTime)
+
     // Should the game even start
     var gameHeight = utils.getCurrentHeight()
     if (currentHeight < gameHeight) {
@@ -85,7 +90,6 @@ function distributeWinnings(currentHeight: number, myAccount: string) {
         return
     }
     
-
     if (currentHeight === gameHeight) {
         utils.logError("Current height is the same as the game height, no one played or transactions are pending")
         return
@@ -102,8 +106,6 @@ function distributeWinnings(currentHeight: number, myAccount: string) {
     utils.log("Winning Number: " + winningNumber)
     utils.setLastWinningNumber(winningNumber)
     utils.setLastWinners([])
-    var dateTime = Date.now()
-    utils.setCurrentGameTime(dateTime)
 
     nano.getAccountHistory(myAccount, difference, response => {
         var blocks = response.data.history        
