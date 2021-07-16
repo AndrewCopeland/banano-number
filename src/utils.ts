@@ -22,6 +22,7 @@ const wallet_file = data_dir + "wallet"
 const account_file = data_dir + "account"
 const house_players_file = data_dir + "house-players"
 const boost_account_file = data_dir + "boost-account"
+const game_interval_file = data_dir + "game-interval"
 
 function readFile(path: string): string {
     return fs.readFileSync(path,'utf8');
@@ -167,6 +168,14 @@ export function getAccount() {
 
 export function getHousePlayers(): string[] {
     return JSON.parse(readFile(house_players_file))
+}
+
+export function getGameInterval(): number {
+    return Number(readFile(game_interval_file))
+}
+
+export function setgameInterval(interval: number) {
+    writeFile(game_interval_file, interval.toString())
 }
 
 // logging functions

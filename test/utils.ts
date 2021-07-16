@@ -158,4 +158,10 @@ describe('Persistence tests', () => {
 
 
   })
+
+  it('Set and get game interval', () => {
+    var interval = 5
+    utils.setgameInterval(5)
+    expect(utils.getGameInterval()).to.equal(interval)
+  })
 })
