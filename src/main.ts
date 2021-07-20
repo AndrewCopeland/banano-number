@@ -8,7 +8,7 @@ import { boostGame } from './booster'
 
 const PORT = 3000
 // Every 1 mins
-const GAME_INTERVAL =  60 * 1000
+const GAME_INTERVAL =  utils.getGameInterval()
 // Every 1 second
 const STATS_INTERVAL = 1000 
 // House players interval
