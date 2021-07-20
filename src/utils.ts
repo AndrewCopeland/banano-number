@@ -23,6 +23,7 @@ const account_file = data_dir + "account"
 const house_players_file = data_dir + "house-players"
 const boost_account_file = data_dir + "boost-account"
 const game_interval_file = data_dir + "game-interval"
+const participent_limit_file = data_dir + "participent-limit"
 
 function readFile(path: string): string {
     return fs.readFileSync(path,'utf8');
@@ -75,6 +76,14 @@ export function getGameHistory(): History[] {
 
 export function getBoostAccount(): string {
     return readFile(boost_account_file).trim()
+}
+
+export function getParticipentLimit(): number {
+    return Number(readFile(participent_limit_file))
+}
+
+export function setParticipentLimit(players: number) {
+    writeFile(participent_limit_file, players.toString())
 }
 
 // Set functions
