@@ -101,15 +101,18 @@ function distributeWinnings(currentHeight: number, myAccount: string) {
         return
     }
 
-
-    var winningNumber = guessAlgo()
-    utils.log("Winning Number: " + winningNumber)
-    utils.setLastWinningNumber(winningNumber)
-    utils.setLastWinners([])
-
     nano.getAccountHistory(myAccount, difference, response => {
         var blocks = response.data.history        
         let [receivedAmount, players, winners] = getRecievedAmountPlayersAndWinners(blocks, winningNumber)
+        if (players.length < utils.getParticipentLimit()) {
+            utils.logError("Game will not play because not enough participents")
+            return
+        }
+
+        var winningNumber = guessAlgo()
+        utils.log("Winning Number: " + winningNumber)
+        utils.setLastWinningNumber(winningNumber)
+        utils.setLastWinners([])
 
         utils.log("Received amount: " + receivedAmount.toString())
         utils.log("Number of Winners: " + winners.length.toString())
